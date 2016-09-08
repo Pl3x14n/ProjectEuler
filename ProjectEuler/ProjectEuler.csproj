@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8429EA66-22CE-43B4-93F2-81758E7FF2D7}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ProjectEuler</RootNamespace>
+    <AssemblyName>ProjectEuler</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Helper\Exponentiation.cs" />
+    <Compile Include="Helper\Fraction.cs" />
+    <Compile Include="Helper\Index.cs" />
+    <Compile Include="Helper\Methods.cs" />
+    <Compile Include="Helper\IProblem.cs" />
+    <Compile Include="Helper\PokerCard.cs" />
+    <Compile Include="Helper\StartUp.cs" />
+    <Compile Include="Problems\Problem254.cs" />
+    <Compile Include="Problems\Problem076.cs" />
+    <Compile Include="Problems\Problem055.cs" />
+    <Compile Include="Problems\Problem054.cs" />
+    <Compile Include="Problems\Solved\Problem053.cs" />
+    <Compile Include="Problems\Solved\Problem052.cs" />
+    <Compile Include="Problems\Problem051.cs" />
+    <Compile Include="Problems\Solved\Problem050.cs" />
+    <Compile Include="Problems\Solved\Problem049.cs" />
+    <Compile Include="Problems\Solved\Problem048.cs" />
+    <Compile Include="Problems\Solved\Problem047.cs" />
+    <Compile Include="Problems\Solved\Problem046.cs" />
+    <Compile Include="Problems\Solved\Problem045.cs" />
+    <Compile Include="Problems\Solved\Problem044.cs" />
+    <Compile Include="Problems\Solved\Problem043.cs" />
+    <Compile Include="Problems\Solved\Problem042.cs" />
+    <Compile Include="Problems\Solved\Problem041.cs" />
+    <Compile Include="Problems\Solved\Problem040.cs" />
+    <Compile Include="Problems\Solved\Problem035.cs" />
+    <Compile Include="Problems\Solved\Problem039.cs" />
+    <Compile Include="Problems\Solved\Problem038.cs" />
+    <Compile Include="Problems\Solved\Problem037.cs" />
+    <Compile Include="Problems\Solved\Problem036.cs" />
+    <Compile Include="Problems\Solved\Problem029.cs" />
+    <Compile Include="Problems\Solved\Problem034.cs" />
+    <Compile Include="Problems\Solved\Problem033.cs" />
+    <Compile Include="Problems\Solved\Problem032.cs" />
+    <Compile Include="Problems\Problem031.cs" />
+    <Compile Include="Problems\Solved\Problem030.cs" />
+    <Compile Include="Problems\Solved\Problem028.cs" />
+    <Compile Include="Problems\Solved\Problem026.cs" />
+    <Compile Include="Problems\Solved\Problem027.cs" />
+    <Compile Include="Problems\Solved\Problem025.cs" />
+    <Compile Include="Problems\Solved\Problem024.cs" />
+    <Compile Include="Problems\Solved\Problem023.cs" />
+    <Compile Include="Problems\Solved\Problem022.cs" />
+    <Compile Include="Problems\Solved\Problem021.cs" />
+    <Compile Include="Problems\Solved\Problem020.cs" />
+    <Compile Include="Problems\Solved\Problem019.cs" />
+    <Compile Include="Problems\Problem018.cs" />
+    <Compile Include="Problems\Solved\Problem017.cs" />
+    <Compile Include="Problems\Solved\Problem011.cs" />
+    <Compile Include="Problems\Solved\Problem012.cs" />
+    <Compile Include="Problems\Solved\Problem016.cs" />
+    <Compile Include="Problems\Solved\Problem013.cs" />
+    <Compile Include="Problems\Solved\Problem015.cs" />
+    <Compile Include="Problems\Solved\Problem014.cs" />
+    <Compile Include="Problems\Solved\Problem010.cs" />
+    <Compile Include="Problems\Solved\Problem007.cs" />
+    <Compile Include="Problems\Solved\Problem008.cs" />
+    <Compile Include="Problems\Solved\Problem006.cs" />
+    <Compile Include="Problems\Solved\Problem005.cs" />
+    <Compile Include="Problems\Solved\Problem004.cs" />
+    <Compile Include="Problems\Solved\Problem003.cs" />
+    <Compile Include="Problems\Solved\Problem002.cs" />
+    <Compile Include="Problems\Solved\Problem001.cs" />
+    <Compile Include="Problems\Solved\Problem009.cs" />
+    <Compile Include="Problems\Test.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Problems\Input\Problem054.txt" />
+    <Content Include="Problems\Input\Problem011.txt" />
+    <Content Include="Problems\Input\Problem013.txt" />
+    <Content Include="Problems\Input\Problem018.txt" />
+    <Content Include="Problems\Input\Problem022.txt" />
+    <Content Include="Problems\Input\Problem042.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
