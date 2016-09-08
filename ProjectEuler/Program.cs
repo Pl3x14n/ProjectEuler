@@ -11,7 +11,7 @@
 		static void Main(string[] args)
 		{
 			// ===========================
-			const int problem = 4;
+			const int problem = 92;
 			// ===========================
 
 
@@ -49,6 +49,7 @@
 			Console.WriteLine("Elapsed Time:  \t" + sw.Elapsed.TotalSeconds + "s");
 			Console.WriteLine("Used memory: \t" + ((totalMemory2 - totalMemory) / 1024) + " KiB");
 
+			StartUp.BringConsoleToFront();
 			Console.ReadLine();
 
 
