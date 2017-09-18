@@ -1,0 +1,18 @@
+LET t = TIME
+
+FOR deno = 1 TO 12000
+   FOR nomi = INT(deno/3+1) TO INT(deno/2-1)
+      IF gcd(nomi,deno) = 1 THEN LET frac = frac + 1 
+   NEXT nomi
+NEXT deno
+
+PRINT frac
+PRINT "(";TIME-t;"s )"
+
+
+FUNCTION gcd(a,b)
+   IF b = 0 THEN LET gcd = a ELSE LET gcd = gcd(b,MOD(a,b))
+END FUNCTION 
+
+
+END

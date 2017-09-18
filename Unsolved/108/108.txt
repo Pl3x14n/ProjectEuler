@@ -1,0 +1,23 @@
+OPTION ARITHMETIC Decimal_High
+
+DO 
+   LET n = n + 1   
+   LET solutions = (teileranzahl(n^2) + 1) / 2    
+   IF solutions > 1000 THEN EXIT DO 
+LOOP 
+
+PRINT n;"   (";solutions;")"
+
+
+FUNCTION teileranzahl(a)
+   LET t = 0
+   FOR i = 1 TO SQR(a)
+      IF MOD(a,i)=0 THEN LET t = t + 2                
+   NEXT i
+   IF SQR(a) = INT(SQR(a)) THEN LET t = t - 1
+    
+   LET teileranzahl = t 
+END FUNCTION 
+
+
+END

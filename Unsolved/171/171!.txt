@@ -1,0 +1,13 @@
+FOR n = 1 TO 10^20-1
+   LET n$ = STR$(n)
+    
+   FOR i = 1 TO LEN(n$)
+      LET f = f + VAL(n$(i:i))^2
+   NEXT i
+   
+   IF SQR(f) = INT(SQR(f)) THEN LET sum = sum + n 
+    
+NEXT n
+
+PRINT sum
+END

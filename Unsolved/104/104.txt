@@ -1,0 +1,45 @@
+OPTION CHARACTER byte
+OPTION ARITHMETIC Decimal_High
+
+LET t = TIME
+
+DO 
+   LET k = k + 1
+   LET fk$ = STR$(fibonacci(k))
+    
+   !IF digits$(fk$(1:9)) = "0111111111" THEN
+   IF digits$(fk$(LEN(fk$)-8:LEN(fk$))) = "0111111111" THEN EXIT DO 
+   !END IF 
+LOOP  
+
+PRINT k
+PRINT "(";TIME-t;"s )"
+
+
+
+
+
+FUNCTION fibonacci(n)
+   local f1,f2
+   LET f1 = (1 + SQR(5))/2
+   LET f2 = (1 - SQR(5))/2
+    
+   LET fibonacci = ROUND(1/SQR(5) * (f1^n - f2^n))  
+END FUNCTION 
+
+
+FUNCTION digits$(n$)
+   local i,x,d$   
+    
+   LET d$ = REPEAT$("0",10)    
+    
+   FOR i = 1 TO LEN(n$)
+      LET x = VAL(d$( VAL(n$(i:i))+1 : VAL(n$(i:i))+1 ) )
+      LET x = x + 1 
+      LET d$ = d$(1  :VAL(n$(i:i))) & STR$(x) & d$(VAL(n$(i:i))+2 : LEN(d$))      
+   NEXT i
+    
+   LET digits$ = d$
+END FUNCTION 
+
+END

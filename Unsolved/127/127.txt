@@ -1,0 +1,120 @@
+LET LIMIT = 1000 - 1
+
+FOR a = 1 TO CEIL(LIMIT/2)
+   FOR b = a+1 TO LIMIT-a-1     
+       
+      IF gcd(a,b) = 1 THEN
+         LET c = a + b
+         IF gcd(a,c) = 1 THEN
+            IF gcd(b,c) = 1 THEN
+               IF radical(a*b*c) < c THEN
+                  LET abc_hit = abc_hit + 1
+                  PRINT abc_hit,a;b;c
+                  LET sumc = sumc + c
+               END IF 
+            END IF
+         END IF
+      END IF 
+       
+       
+       
+   NEXT b
+NEXT a
+
+PRINT "--------------------------------"
+PRINT sumc
+
+
+FUNCTION gcd(a,b)
+   local z,n,r
+   LET z = MAX(a,b)
+   LET n = MIN(a,b)
+   DO 
+      LET r = MOD(z,n)
+      IF r = 0 THEN EXIT DO 
+       
+      LET z = n
+      LET n = r
+   LOOP  
+    
+   LET gcd = n
+END FUNCTION 
+
+
+
+
+
+
+
+
+
+FUNCTION radical(n)
+   local f,pf$,i,lastlastspace,lastspace,space,r,prime_factors,x
+    
+   LET x = n
+   LET r = 1 
+   LET f = 2
+   DO WHILE x<>1
+      DO WHILE MOD(x,f)=0
+         LET pf$ = pf$ & " " & STR$(f)
+         LET prime_factors = prime_factors + 1
+         LET x=x/f 
+      LOOP
+      LET f=f+1
+   LOOP
+    
+   IF prime_factors = 1 THEN
+      LET r = n
+       
+   ELSEIF prime_factors = 2 THEN
+      FOR i = 2 TO LEN(pf$)
+         IF pf$(i:i) = " " THEN EXIT FOR
+      NEXT i
+      IF pf$(2:i-1) <> pf$(i+1:LEN(pf$)) THEN 
+         LET r = VAL(pf$(2:i-1)) * VAL(pf$(i+1:LEN(pf$)))
+      ELSE 
+         LET r = VAL(pf$(2:i-1))
+      END IF 
+       
+   ELSE   
+      FOR i = 1 TO LEN(pf$)
+       
+         IF pf$(i:i) = " " THEN 
+            IF lastlastspace = 0 THEN 
+               LET lastlastspace = i 
+            ELSEIF lastspace = 0 THEN
+               LET lastspace = i
+            ELSEIF space = 0 THEN
+               LET space = i
+            ELSE 
+               LET lastlastspace = lastspace
+               LET lastspace = space
+               LET space = i
+            END IF 
+             
+             
+            IF lastlastspace <> 0 AND lastspace <> 0 AND space <> 0 THEN
+               IF pf$(lastlastspace+1:lastspace-1) <> pf$(lastspace+1:space-1) THEN
+                  LET r = r * VAL(pf$(lastlastspace+1:lastspace-1))
+               END IF
+            END IF       
+             
+         END IF 
+      NEXT i   
+       
+      IF pf$(lastspace+1:space-1) <> pf$(space+1:LEN(pf$)) THEN
+         LET r = r * VAL(pf$(lastspace+1:space-1)) * VAL(pf$(space+1:LEN(pf$)))
+      END IF
+       
+   END IF  
+    
+   IF n<>1 AND prime_factors > 1 AND n^(1/prime_factors) = INT(n^(1/prime_factors)) THEN LET r = n^(1/prime_factors)
+   LET radical = r
+    
+END FUNCTION
+
+
+
+END
+
+

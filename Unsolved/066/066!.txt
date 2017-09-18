@@ -1,0 +1,29 @@
+FOR d = 2 TO 1000
+   IF SQR(d) <> INT(SQR(d)) THEN                                   ! Wenn d keine Quadratzahl ist, dann
+      LET x = 0
+      DO 
+         LET x = x + 1
+         IF x^2>d THEN 
+            LET y = SQR((-x^2 + 1)/(-d))                          ! Auflösen in "x^2 - Dy^2 = 1" nach y
+            IF y = INT(y) THEN 
+               IF x^2 - d*y^2 = 1 THEN 
+                  PRINT "MIN";d;" =  ";STR$(x);"^2 - ";STR$(d);"*";STR$(y);"^2"
+                   
+                  IF x > maxx  THEN 
+                     LET maxx = x
+                     LET maxd = d
+                  END IF 
+                   
+                  EXIT DO 
+               END IF 
+            END IF   
+             
+         END IF 
+      LOOP 
+       
+   END IF 
+    
+NEXT d
+PRINT "------------------------"
+PRINT maxd;"  (";STR$(maxx);")"
+END

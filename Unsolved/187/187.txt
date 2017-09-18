@@ -1,0 +1,62 @@
+DIM primes(20000)
+
+
+FOR n = 2 TO 100000
+   IF MOD(n,2)=0 THEN
+      IF n=2 THEN
+         LET prime = prime + 1
+         LET primes(prime) = 2
+      END IF 
+   ELSE
+      FOR i=3 TO SQR(n) STEP 2
+         IF MOD(n,i)=0 THEN EXIT FOR 
+      NEXT i
+      IF i>SQR(n) THEN 
+         LET prime = prime + 1
+         LET primes(prime) = n
+      END IF 
+   END IF
+NEXT n
+
+
+
+FOR number = 2 TO 10^8 - 1
+   IF primefactors(number) = 2 THEN LET ppf = ppf + 1 
+NEXT number
+
+PRINT ppf
+
+FUNCTION primefactors(a)
+
+   LET i  = 1
+   DO UNTIL primes(i) > a OR i = prime
+      IF a = primes(i) THEN 
+         LET pf = 1
+         GOTO 10
+      END IF 
+      LET i = i +1
+   LOOP 
+    
+   LET pf = 0
+   LET p = 0
+   LET t = a
+   DO UNTIL t = 1
+      LET p = p + 1
+       
+      DO 
+         IF MOD(t,primes(p)) = 0  THEN
+            LET t = t/primes(p)
+            LET pf = pf + 1
+         ELSE 
+            EXIT do
+         END IF 
+      LOOP 
+       
+       
+   LOOP 
+10
+      LET primefactors = pf 
+       
+   END FUNCTION
+    
+END

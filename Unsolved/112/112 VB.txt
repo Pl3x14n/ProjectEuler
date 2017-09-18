@@ -1,0 +1,30 @@
+Public Class Form1
+    Function bouncy(n As String)
+        Dim solu As Integer = Len(n) - 1
+        Dim s As Integer = 0
+
+        For i = 1 To Len(n) - 1
+            If Mid(n, i, 1) < Mid(n, i + 1, 1) Then
+                s = s + 1
+            ElseIf Mid(n, i, 1) > Mid(n, i + 1, 1) Then
+                s = s - 1
+            ElseIf Mid(n, i, 1) = Mid(n, i + 1, 1) Then
+                solu = solu - 1
+            End If
+        Next i
+
+        If Math.Abs(s) <> solu Then bouncy = 1 Else bouncy = 0
+    End Function
+
+
+    Private Sub Form1_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
+        Dim i As Long
+        Dim bounce As Long
+        Do
+            i += 1
+            If bouncy(CStr(i)) = 1 Then bounce += 1
+            If Math.Round(bounce / i, 10) = 0.99 Then Exit Do
+        Loop
+        TextBox.Text = i
+    End Sub
+End Class

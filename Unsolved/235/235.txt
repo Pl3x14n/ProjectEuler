@@ -1,0 +1,43 @@
+DEF u(n) = (900-3*n)*r^(n-1)
+
+LET n = 5000
+LET VALUE = -600000000000
+LET addend = 1
+
+LET r = 2
+
+
+FOR i = 1 TO 12
+   LET r = r - addend*10
+    
+   DO 
+      LET r = r + addend
+      IF -s(n) > -VALUE THEN EXIT DO    
+   LOOP
+    
+    
+   LET addend = addend/10
+NEXT i
+
+PRINT r
+
+
+
+
+
+
+FUNCTION s(n)
+   local k,sum
+   FOR k = 1 TO n
+      LET sum = sum + u(k)
+   NEXT k
+    
+   LET s = sum
+    
+END FUNCTION 
+
+
+
+
+
+END

@@ -1,0 +1,24 @@
+FOR a = 1 TO 333333333						!a+b+c darf ja maximal 1.000.000.000 sein
+   LET b = a						   	!zwei gleichlange Seiten
+   LET c = a + 1						!die um eine Einheit abweichende Seite
+    
+   LET areal = SQR((a+b+c)*(a+b-c)*(b+c-a)*(c+a-b)) / 4 	!Die Fläche
+    
+   IF INT(areal) = areal THEN
+      LET nummer = nummer + 1
+      LET tot_u = tot_u + a + b + c
+   END IF 
+    
+   LET c = a - 1						!die um eine Einheit abweichende Seite
+   LET areal = SQR((a+b+c)*(a+b-c)*(b+c-a)*(c+a-b)) / 4 	!Die Fläche
+    
+   IF INT(areal) = areal THEN					!da a,b,c sowieso ganzzahlig sind, noch die fläche testen
+      LET nummer = nummer + 1
+      LET tot_u = tot_u + a + b + c
+   END IF 
+    
+    
+NEXT a
+PRINT tot_u
+END
+

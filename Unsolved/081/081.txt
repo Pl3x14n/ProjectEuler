@@ -1,0 +1,118 @@
+LET t = TIME
+
+DIM matrix(80,80)
+
+OPEN #1: NAME "matrix.txt"
+SET POINTER BEGIN
+
+DO
+   LET matrixsize = matrixsize + 1
+   INPUT #1, IF MISSING THEN EXIT DO: line$
+    
+   LET number = 0
+   FOR i = 1 TO LEN(line$)
+    
+      IF line$(i:i) = "_" OR i = LEN(line$) THEN 
+         LET number = number + 1
+         LET matrix(matrixsize,number) = VAL(number$)
+         LET number$ = ""
+      ELSE
+         LET number$ = number$ & line$(i:i)
+      END IF
+   NEXT i
+    
+LOOP
+
+LET matrixsize = matrixsize - 1
+
+
+
+CLOSE #1
+
+LET x = 1
+LET y = 80
+
+DO UNTIL x = 80 AND y = 1
+
+   IF x = 80 THEN 
+      LET sum = sum + matrix(x,y-1)      
+      LET y = y - 1
+   ELSEIF y = 1 THEN
+      LET sum = sum + matrix(x+1,y)
+      LET x = x + 1
+       
+   ELSEIF x = 79 AND y = 2 THEN 
+      LET p1 = matrix(x+1,y) + matrix(x+1,y-1)
+      LET p2 = matrix(x,y-1) + matrix(x+1,y-1)
+       
+      LET mini = MIN(p1,p2)
+       
+      IF mini = p1  THEN
+         LET x = x + 1
+      ELSEIF mini = p2 THEN
+         LET y = y - 1
+      END IF 
+       
+      LET sum = sum + matrix(x,y)
+       
+       
+   ELSEIF x = 79 THEN 
+      LET p1 = matrix(x+1,y) + matrix(x+1,y-1)
+      LET p2 = matrix(x,y-1) + matrix(x+1,y-1)
+      LET p3 = matrix(x,y-1) + matrix(x,y-2) 
+       
+      LET mini = MIN(p1,p2)
+      LET mini = MIN(mini,p3)
+       
+      IF mini = p1  THEN
+         LET x = x + 1
+      ELSEIF mini = p2 OR mini = p3 THEN
+         LET y = y - 1
+      END IF
+       
+      LET sum = sum + matrix(x,y) 
+       
+   ELSEIF y = 79 THEN 
+      LET p1 = matrix(x+1,y) + matrix(x+2,y)
+      LET p2 = matrix(x+1,y) + matrix(x+1,y-1)
+      LET p3 = matrix(x,y-1) + matrix(x+1,y-1)
+       
+      LET mini = MIN(p1,p2)
+      LET mini = MIN(mini,p3)
+       
+      IF mini = p1 OR mini = p2 THEN
+         LET x = x + 1
+      ELSEIF mini = p3 THEN
+         LET y = y - 1
+      END if 
+       
+      LET sum = sum + matrix(x,y)
+       
+       
+       
+   ELSE 
+      LET p1 = matrix(x+1,y) + matrix(x+2,y)
+      LET p2 = matrix(x+1,y) + matrix(x+1,y-1)
+      LET p3 = matrix(x,y-1) + matrix(x+1,y-1)
+      LET p4 = matrix(x,y-1) + matrix(x,y-2) 
+       
+      LET mini = MIN(p1,p2)
+      LET mini = MIN(mini,p3)
+      LET mini = MIN(mini,p4)
+       
+      IF mini = p1 OR mini = p2 THEN
+         LET x = x + 1
+      ELSEIF mini = p3 OR mini = p4 THEN
+         LET y = y - 1
+      END if 
+       
+      LET sum = sum + matrix(x,y)
+       
+   END IF 
+    
+    
+LOOP 
+
+PRINT sum;"      (";TIME-t;"s )"
+END
+

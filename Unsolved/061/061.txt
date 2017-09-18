@@ -1,0 +1,78 @@
+
+
+
+FOR p3 = 45 TO 140
+   LET n1$ = STR$(p3*(p3+1)/2)
+    
+    
+   FOR n2 = 10 TO 99
+      LET n2$ = n1$(3:4) & STR$(n2)
+       
+      IF INT(SQR(VAL(n2$))) = SQR(VAL(n2$)) THEN 
+       
+         FOR n3 = 10 TO 99
+            LET n3$ = n2$(3:4) & STR$(n3)
+             
+            FOR p5 = 26 TO 81
+               IF p5*(3*p5-1)/2 = VAL(n3$) THEN EXIT for  
+            NEXT p5
+             
+            IF p5-1 < 81 THEN 
+               FOR n4 = 10 TO 99
+                  LET n4$ = n3$(3:4) & STR$(n4)
+                   
+                  FOR p6 = 23 TO 70
+                     IF p6*(2*p6-1) = VAL(n4$) THEN EXIT for 
+                  NEXT p6
+                   
+                  IF p6-1 <> 70 THEN 
+                     FOR n5 = 10 TO 99
+                        LET n5$ = n4$(3:4) & STR$(n5)
+                         
+                        FOR p7 = 21 TO 63
+                           IF p7*(5*p3-3)/2 = VAL(n5$) THEN EXIT FOR 
+                        NEXT p7
+                         
+                        IF p7-1 <> 63 THEN 
+                           LET n6$ = n5$(3:4) & n1$(1:2)
+                            
+                           FOR p8 = 19 TO 58
+                              IF p8*(3*p8-2) = VAL(n5$) THEN EXIT FOR 
+                           NEXT p8
+                            
+                           IF p8-1 <> 58 THEN GOTO 10
+                            
+                        END IF 
+                         
+                     NEXT n5
+                      
+                  END IF 
+                   
+               NEXT n4
+                
+                
+                
+            END if 
+             
+         NEXT n3
+          
+      END IF  
+       
+       
+       
+       
+   NEXT n2
+    
+    
+    
+NEXT p3
+
+10
+   PRINT n1$;"(";STR$(p3);")  ";n2$;"(";STR$(sqr(n2));")  ";n3$;"(";STR$(p5);")  ";n4$;"(";STR$(p6);")  ";n5$;"(";STR$(p7);")  ";n6$;"(";STR$(p8);")"
+   PRINT "-----------------------------------------------------------------------"
+   PRINT n1+n2+n3+n4+n5+n6
+    
+    
+    
+    
+END

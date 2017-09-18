@@ -1,0 +1,26 @@
+DEF t(n) = 2*n^2 - 1
+
+FOR x = 2 TO 50000000
+   IF prime(t(x)) = 1 THEN LET primes = primes + 1
+NEXT x
+
+PRINT primes
+
+
+FUNCTION prime(n)
+   IF MOD(n,2)=0 THEN
+      IF n=2 THEN LET prime = 1 ELSE LET prime = 0
+   ELSE
+      FOR i=3 TO SQR(n) STEP 2
+         IF MOD(n,i)=0 THEN EXIT FOR 
+      NEXT i
+      IF i<=SQR(n) THEN LET prime = 0 ELSE LET prime = 1
+   END IF
+END FUNCTION 
+
+
+
+END
+
+
+

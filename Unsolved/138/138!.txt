@@ -1,0 +1,24 @@
+OPTION ARITHMETIC Decimal_High
+
+DO UNTIL p_isosceles = 12
+   LET b = b + 1					! Basis des Dreiecks
+   FOR l = b+1 TO b*2                                   ! Ein Schenkel
+      LET h = SQR(l^2 -(b/2)^2)                         ! Die Höhe
+       
+      IF h = b + 1 OR h = b - 1 THEN                    !Ist h = b (+-) 1
+         LET p_isosceles = p_isosceles + 1
+         PRINT p_isosceles,b;l;h
+         LET sum_l = sum_l + l
+         EXIT FOR 
+      END IF
+       
+       
+       
+       
+   NEXT l
+LOOP 
+
+PRINT "------------------------------------"
+PRINT sum_l
+END
+ 

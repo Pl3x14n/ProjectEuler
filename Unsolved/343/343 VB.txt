@@ -1,0 +1,36 @@
+Private Sub Start_Click(sender As Object, e As EventArgs) Handles Start.Click
+        Dim sum As Double
+
+        For k As Long = 1 To 20 '2 * 10 ^ 6
+            sum += f(k ^ 3)
+            If k Mod 50 = 0 Then
+                Output.Text = k & vbCrLf & Output.Text
+                Output.Refresh()
+            End If
+        Next k
+
+        Output.Text = sum & vbCrLf & Output.Text
+    End Sub
+
+
+
+    Function f(k As Long) As Long
+        Dim x As Long = 1
+        Dim y As Long = k
+        Dim g As Long
+
+        Do While y <> 1
+            x += 1
+            y -= 1
+            g = gcd(x, y)
+            x /= g
+            y /= g
+        Loop
+
+        f = x
+    End Function
+
+
+    Function gcd(a As Long, b As Long)
+        If b = 0 Then gcd = a Else gcd = gcd(b, a Mod b)
+    End Function

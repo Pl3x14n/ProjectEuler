@@ -1,0 +1,69 @@
+OPTION ARITHMETIC Decimal_High
+LET MAXn = 10^7
+DIM ta(MAXn)
+PRINT a
+
+FOR i = 2 TO CEIL(SQR(maxn))
+   LET ta(i) = teileranzahl(i)
+   IF gcd(i,i-1) = 1 AND ta(i^2-i) = 0 THEN LET ta(i^2-i) = ta(i)*ta(i-1)
+NEXT i
+
+PRINT d
+
+FOR n = 1 TO MAXn-1
+   IF ta(n) = 0 THEN LET ta(n) = teileranzahl(n)
+   IF ta(n) = ta(n+1) THEN LET ni = ni + 1
+NEXT n
+
+PRINT ni
+
+
+
+
+FUNCTION gcd(gcda,gcdb)
+   LET gcdz = gcda
+   LET gcdn = gcdb
+   DO 
+      LET gcdr = MOD(gcdz,gcdn)
+      IF gcdr = 0 THEN EXIT DO 
+       
+      LET gcdz = gcdn
+      LET gcdn = gcdr
+   LOOP  
+    
+   LET gcd = gcdn
+END FUNCTION 
+
+
+
+
+FUNCTION teileranzahl(a)
+   LET t = 0 
+    
+   IF prime(a) = 1 THEN 
+      LET t = 2
+   ELSE 
+      FOR i = 1 TO SQR(a)
+         IF MOD(a,i)=0 THEN LET t = t + 2                
+      NEXT i
+      IF SQR(a) = INT(SQR(a)) THEN LET t = t - 1
+   END IF     
+    
+   LET teileranzahl = t 
+END FUNCTION 
+
+
+
+FUNCTION prime(n)
+   IF MOD(n,2)=0 THEN
+      IF n=2 THEN LET prime = 1 ELSE LET prime = 0
+   ELSE
+      FOR i=3 TO SQR(n) STEP 2
+         IF MOD(n,i)=0 THEN EXIT FOR 
+      NEXT i
+      IF i<=SQR(n) THEN LET prime = 0 ELSE LET prime = 1
+   END IF
+END FUNCTION 
+
+
+END

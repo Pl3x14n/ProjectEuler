@@ -1,0 +1,171 @@
+LET t = TIME
+
+DIM matrix(80,80)
+
+OPEN #1: NAME "matrix.txt"
+SET POINTER BEGIN
+
+DO
+   LET matrixsize = matrixsize + 1
+   INPUT #1, IF MISSING THEN EXIT DO: line$
+    
+   LET number = 0
+   FOR i = 1 TO LEN(line$)
+    
+      IF line$(i:i) = "_" OR i = LEN(line$) THEN 
+         LET number = number + 1
+         LET matrix(matrixsize,number) = VAL(number$)
+         LET number$ = ""
+      ELSE
+         LET number$ = number$ & line$(i:i)
+      END IF
+   NEXT i
+    
+LOOP
+
+LET matrixsize = matrixsize - 1
+
+
+
+CLOSE #1
+
+LET x = 1
+LET y = matrixsize
+
+DO UNTIL x = matrixsize AND y = 1
+
+   IF x = matrixsize THEN    
+      LET y = y - 1
+       
+   ELSEIF y = 1 THEN
+      LET x = x + 1
+       
+   ELSEIF x = matrixsize-2 AND y = 3 THEN
+      LET p1 = matrix(x+1,y) + matrix(x+2,y) + matrix(x+2,y-1)
+      LET p2 = matrix(x+1,y) + matrix(x+1,y-1) + matrix(x+2,y-1)
+      LET p3 = matrix(x+1,y) + matrix(x+1,y-1) + matrix(x+1,y-2)
+      LET p4 = matrix(x,y-1) + matrix(x+1,y-1) + matrix(x+2,y-1)
+      LET p5 = matrix(x,y-1) + matrix(x+1,y-1) + matrix(x+1,y-2)
+      LET p6 = matrix(x,y-1) + matrix(x,y-2) + matrix(x+1,y-2) 
+       
+      LET mini = MIN(p1,p2)
+      LET mini = MIN(mini,p3)
+      LET mini = MIN(mini,p4)
+      LET mini = MIN(mini,p5)
+      LET mini = MIN(mini,p6)
+       
+      IF mini = p1 OR mini = p2 OR mini = p3  THEN
+         LET x = x + 1
+      ELSEIF mini = p4 OR mini = p5 OR mini = p6 THEN
+         LET y = y - 1
+      END IF 
+       
+       
+   ELSEIF x = matrixsize-1 AND y = 3 THEN
+      LET p1 = matrix(x+1,y) + matrix(x+1,y-1) + matrix(x+1,y-2)
+      LET p2 = matrix(x,y-1) + matrix(x+1,y-1) + matrix(x+1,y-2)
+      LET p3 = matrix(x,y-1) + matrix(x,y-2) + matrix(x+1,y-2)
+       
+      LET mini = MIN(p1,p2)
+      LET mini = MIN(mini,p3)
+       
+      IF mini = p1 THEN
+         LET x = x + 1
+      ELSEIF mini = p2 OR mini = p3 THEN
+         LET y = y - 1
+      END IF 
+      
+      
+   ELSEIF x = matrixsize-2 AND y = 2 THEN
+      LET p1 = matrix(x,y-1) + matrix(x+1,y-1) + matrix(x+2,y-1)
+      LET p2 = matrix(x+1,y) + matrix(x+1,y-1) + matrix(x+2,y-1)
+      LET p3 = matrix(x+1,y) + matrix(x+2,y) + matrix(x+2,y-1)
+       
+      LET mini = MIN(p1,p2)
+      LET mini = MIN(mini,p3)
+       
+      IF mini = p1 OR mini = p2 THEN
+         LET x = x + 1
+      ELSEIF mini = p3 THEN
+         LET y = y - 1
+      END IF   
+       
+       
+   ELSEIF x = matrixsize-1 AND y = 2 THEN 
+      LET p1 = matrix(x+1,y) + matrix(x+1,y-1)
+      LET p2 = matrix(x,y-1) + matrix(x+1,y-1)
+       
+      LET mini = MIN(p1,p2)
+       
+      IF mini = p1  THEN
+         LET x = x + 1
+      ELSEIF mini = p2 THEN
+         LET y = y - 1
+      END IF 
+       
+       
+   ELSEIF x = matrixsize-1 THEN 
+      LET p1 = matrix(x+1,y) + matrix(x+1,y-1)
+      LET p2 = matrix(x,y-1) + matrix(x+1,y-1)
+      LET p3 = matrix(x,y-1) + matrix(x,y-2) 
+       
+      LET mini = MIN(p1,p2)
+      LET mini = MIN(mini,p3)
+       
+      IF mini = p1  THEN
+         LET x = x + 1
+      ELSEIF mini = p2 OR mini = p3 THEN
+         LET y = y - 1
+      END IF
+       
+       
+   ELSEIF y = 2 THEN 
+      LET p1 = matrix(x+1,y) + matrix(x+2,y)
+      LET p2 = matrix(x+1,y) + matrix(x+1,y-1)
+      LET p3 = matrix(x,y-1) + matrix(x+1,y-1)
+       
+      LET mini = MIN(p1,p2)
+      LET mini = MIN(mini,p3)
+       
+      IF mini = p1 OR mini = p2 THEN
+         LET x = x + 1
+      ELSEIF mini = p3 THEN
+         LET y = y - 1
+      END if 
+       
+       
+   ELSE 
+      LET p1 = matrix(x+1,y) + matrix(x+2,y) + matrix(x+3,y)
+      LET p2 = matrix(x+1,y) + matrix(x+2,y) + matrix(x+2,y-1)
+      LET p3 = matrix(x+1,y) + matrix(x+1,y-1) + matrix(x+2,y-1)
+      LET p4 = matrix(x+1,y) + matrix(x+1,y-1) + matrix(x+1,y-2)
+      LET p5 = matrix(x,y-1) + matrix(x+1,y-1) + matrix(x+2,y-1)
+      LET p6 = matrix(x,y-1) + matrix(x+1,y-1) + matrix(x+1,y-2)
+      LET p7 = matrix(x,y-1) + matrix(x,y-2) + matrix(x+1,y-2)
+      LET p8 = matrix(x,y-1) + matrix(x,y-2) + matrix(x,y-3)
+       
+      LET mini = MIN(p1,p2)
+      LET mini = MIN(mini,p3)
+      LET mini = MIN(mini,p4)
+      LET mini = MIN(mini,p5)
+      LET mini = MIN(mini,p6)
+      LET mini = MIN(mini,p7)
+      LET mini = MIN(mini,p8)
+       
+      IF mini = p1 OR mini = p2 OR mini = p3 OR mini = p4 THEN
+         LET x = x + 1
+      ELSEIF mini = p5 OR mini = p6 OR mini = p7 OR mini = p8 THEN
+         LET y = y - 1
+      END IF 
+       
+       
+   END IF 
+    
+   LET sum = sum + matrix(x,y)
+    
+    
+LOOP 
+
+PRINT sum;"      (";TIME-t;"s )"
+END
+

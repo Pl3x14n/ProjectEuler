@@ -1,0 +1,49 @@
+DIM chains(101)
+
+
+DO 
+   LET x = x + 1
+   IF x = 138 THEN INPUT dddd
+   MAT chains = ZER 
+   LET n = x
+   LET steps = 0
+   LET chains(1) = x
+    
+   DO 
+      LET steps = steps + 1
+      LET ts = teilersumme(n)
+      IF ts > 1000000 OR ts = x OR steps > 100 OR ts = 1 THEN EXIT DO
+       
+      LET chains(steps+1) = ts
+      LET n = ts   
+   LOOP 
+    
+    
+   IF steps > MAXsteps AND ts = x THEN
+      LET MAXsteps = steps
+       
+      FOR i = 1 TO steps
+         IF chains(1) > chains(i) THEN swap chains(1), chains(i)
+      NEXT i
+       
+      LET minchain = CHAINs(1)
+   END IF 
+    
+   IF ts > 1000000 THEN EXIT DO  
+LOOP 
+
+PRINT minchain;"   (";MAXsteps;")"
+
+FUNCTION teilersumme(a)
+   LET ts = 0
+   FOR i = 1 TO SQR(a)
+      IF MOD(a,i)=0 THEN LET ts = ts + i + a/i                
+   NEXT i
+   IF SQR(a) = INT(SQR(a)) THEN LET ts = ts - SQR(a)
+    
+   LET teilersumme = ts - a
+END FUNCTION 
+
+
+
+END

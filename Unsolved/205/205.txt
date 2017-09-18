@@ -1,0 +1,40 @@
+DIM peter(36),colin(36)
+
+FOR n1 = 1 TO 4 
+   FOR n2 = 1 TO 4
+      FOR n3 = 1 TO 4
+         FOR n4 = 1 TO 4
+            FOR n5 = 1 TO 4
+               FOR n6 = 1 TO 4
+                  FOR n7 = 1 TO 4
+                     FOR n8 = 1 TO 4
+                        FOR n9 = 1 TO 4
+                           LET peter(n1+n2+n3+n4+n5+n6+n7+n8+n9) = peter(n1+n2+n3+n4+n5+n6+n7+n8+n9) + 1                 
+                        NEXT n9
+                     NEXT n8
+                  NEXT n7
+               NEXT n6
+            NEXT n5
+         NEXT n4
+      NEXT n3
+   NEXT n2
+NEXT n1
+
+FOR n1 = 1 TO 6
+   FOR n2 = 1 TO 6
+      FOR n3 = 1 TO 6
+         FOR n4 = 1 TO 6
+            FOR n5 = 1 TO 6
+               FOR n6 = 1 TO 6
+                  LET colin(n1+n2+n3+n4+n5+n6) = colin(n1+n2+n3+n4+n5+n6) + 1
+               NEXT n6
+            NEXT n5
+         NEXT n4
+      NEXT n3
+   NEXT n2
+NEXT n1
+
+
+
+END
+

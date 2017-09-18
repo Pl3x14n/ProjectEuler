@@ -1,0 +1,13 @@
+PRINT pseudo_square_root(3102)
+
+FUNCTION pseudo_square_root(n)
+
+   LET divisor = INT(SQR(n))
+   DO
+      IF MOD(n,divisor) = 0 THEN EXIT DO
+      LET divisor = divisor - 1
+   LOOP
+    
+   LET pseudo_square_root = divisor
+END FUNCTION
+END

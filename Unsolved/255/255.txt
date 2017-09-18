@@ -1,0 +1,38 @@
+LET digits = 5
+
+FOR i = 10^(digits-1) TO 10^digits - 1
+   CALL rounded_square_root(i)
+   LET a = a + steps
+NEXT i
+
+LET average = ROUND(a/90000,10)
+
+PRINT average
+
+SUB rounded_square_root(n)
+   local d,x
+    
+   LET d = LEN(STR$(n))
+    
+   IF MOD(n,2) = 0 THEN
+      LET x = 2*10^((d-1)/2)
+   ELSEIF MOD(n,2) = 1 THEN
+      LET x = 7*10^((d-2)/2) 
+   END IF 
+    
+   LET steps = 0
+   DO
+      LET steps = steps + 1
+      LET lastx = x
+       
+      LET x = INT( (x+CEIL(n/x)) / 2 )
+      IF x = lastx THEN EXIT DO 
+       
+   LOOP
+    
+   LET rounded_square_root = x
+    
+   !PRINT rounded_square_root 
+    
+END SUB 
+END

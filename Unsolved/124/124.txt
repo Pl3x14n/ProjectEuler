@@ -1,0 +1,102 @@
+LET t = TIME
+
+LET LIMIT = 100000
+
+
+DIM e(LIMIT,2)
+
+FOR n = 1 TO LIMIT
+   LET e(n,1) = n
+   LET e(n,2) = radical(n)
+NEXT n
+
+
+FOR i = 1 TO LIMIT-1
+   FOR j = i+1 TO LIMIT
+      IF e(i,2) > e(j,2) THEN
+         swap e(i,1), e(j,1)
+         swap e(i,2), e(j,2)
+      END IF 
+   NEXT j
+NEXT i
+
+PRINT e(10000,1);"        (";TIME-t;"s )"
+
+
+
+
+
+
+
+FUNCTION radical(n)
+   local f,pf$,i,lastlastspace,lastspace,space,r,prime_factors,x
+    
+   LET x = n
+   LET r = 1 
+   LET f = 2
+   DO WHILE x<>1 AND f^2 < n
+      DO WHILE MOD(x,f)=0
+         LET pf$ = pf$ & " " & STR$(f)
+         LET prime_factors = prime_factors + 1
+         LET x=x/f 
+      LOOP
+      LET f=f+1
+   LOOP
+    
+   IF prime_factors = 1 THEN
+      LET r = n
+       
+   ELSEIF prime_factors = 2 THEN
+      FOR i = 2 TO LEN(pf$)
+         IF pf$(i:i) = " " THEN EXIT FOR
+      NEXT i
+      IF pf$(2:i-1) <> pf$(i+1:LEN(pf$)) THEN 
+         LET r = VAL(pf$(2:i-1)) * VAL(pf$(i+1:LEN(pf$)))
+      ELSE 
+         LET r = VAL(pf$(2:i-1))
+      END IF 
+       
+   ELSE   
+      FOR i = 1 TO LEN(pf$)
+       
+         IF pf$(i:i) = " " THEN 
+            IF lastlastspace = 0 THEN 
+               LET lastlastspace = i 
+            ELSEIF lastspace = 0 THEN
+               LET lastspace = i
+            ELSEIF space = 0 THEN
+               LET space = i
+            ELSE 
+               LET lastlastspace = lastspace
+               LET lastspace = space
+               LET space = i
+            END IF 
+             
+             
+            IF lastlastspace <> 0 AND lastspace <> 0 AND space <> 0 THEN
+               IF pf$(lastlastspace+1:lastspace-1) <> pf$(lastspace+1:space-1) THEN
+                  LET r = r * VAL(pf$(lastlastspace+1:lastspace-1))
+               END IF
+            END IF       
+             
+         END IF 
+      NEXT i   
+       
+      IF pf$(lastspace+1:space-1) <> pf$(space+1:LEN(pf$)) THEN
+         LET r = r * VAL(pf$(lastspace+1:space-1)) * VAL(pf$(space+1:LEN(pf$)))
+      END IF
+       
+   END IF  
+    
+   IF MOD(r,VAL(pf$(space:LEN(pf$)))) <> 0 THEN LET r = r * VAL(pf$(space:LEN(pf$))) 
+   LET radical = r
+    
+END FUNCTION
+
+
+
+END
+
+
+
+END

@@ -1,0 +1,34 @@
+OPTION CHARACTER byte
+
+LET a$ = "1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679"
+LET b$ = "8214808651328230664709384460955058223172535940812848111745028410270193852110555964462294895493038196"
+
+FOR n = 0 TO 17
+   LET s = 10^n * VAL(dab$((127+19*n)*7^n))
+   PRINT n,s
+   LET sum = sum + s
+NEXT n 
+
+
+
+FUNCTION dab$(n)
+
+   LET f2$ = "A"
+   LET f1$ = "B"
+   DO UNTIL LEN(f$)*LEN(a$) > n
+      LET f$ = f2$ & f1$
+      LET f2$ = f1$
+      LET f1$ = f$
+   LOOP
+    
+   LET ab = CEIL(n/LEN(a$))
+   LET ab2 = MOD(n,LEN(a$))
+
+   IF f$(ab:ab) = "A" THEN 
+      LET dab$ = a$(ab2:ab2)
+   ELSEIF f$(ab:ab) = "B" then 
+      LET dab$ = b$(ab2:ab2)
+   END IF 
+    
+END FUNCTION
+END

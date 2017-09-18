@@ -1,0 +1,30 @@
+OPTION ARITHMETIC Decimal_High
+LET maximum = 10000
+DIM d(5 TO maximum)
+
+
+FOR n = 5 TO maximum
+   LET pmax=0
+    
+   FOR i = 1 TO 1000
+      LET p = (n/i)^i      
+      IF p > pmax THEN LET pmax = p
+   NEXT i
+    
+   LET pmax$ = STR$(pmax)
+    
+   IF LEN(pmax$) >=1000 THEN 
+      LET d(n) = n 
+   ELSE
+      LET d(n) = -n
+   END IF 
+    
+NEXT n
+
+
+
+FOR i = 5 TO maximum
+   LET summe=summe + d(i)
+NEXT i
+PRINT summe
+END

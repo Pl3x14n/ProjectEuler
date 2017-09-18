@@ -1,0 +1,29 @@
+OPTION ARITHMETIC RATIONAL
+
+LET p = 1
+LET n = 1    ! 2
+
+DO 
+   LET p = p + 2
+    
+   IF prime(p) = 1 THEN 
+      LET n = n + 1
+      IF MOD( (p-1)^n + (p+1)^n , p^2) > 10^10 THEN EXIT DO 
+   END IF 
+LOOP 
+
+PRINT n;"     (";p;")"
+
+
+FUNCTION prime(n)
+   local i
+   IF MOD(n,2)=0 THEN
+      IF n=2 THEN LET prime = 1 ELSE LET prime = 0
+   ELSE
+      FOR i=3 TO SQR(n) STEP 2
+         IF MOD(n,i)=0 THEN EXIT FOR 
+      NEXT i
+      IF i<=SQR(n) THEN LET prime = 0 ELSE LET prime = 1
+   END IF
+END FUNCTION 
+END
