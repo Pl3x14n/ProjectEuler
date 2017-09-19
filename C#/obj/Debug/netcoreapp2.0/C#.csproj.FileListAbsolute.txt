@@ -1,0 +1,10 @@
+D:\OneDrive\Documents\Coding\Project Euler\C#\obj\Debug\netcoreapp2.0\C#.csproj.CoreCompileInputs.cache
+D:\OneDrive\Documents\Coding\Project Euler\C#\obj\Debug\netcoreapp2.0\C#.AssemblyInfoInputs.cache
+D:\OneDrive\Documents\Coding\Project Euler\C#\obj\Debug\netcoreapp2.0\C#.AssemblyInfo.cs
+D:\OneDrive\Documents\Coding\Project Euler\C#\bin\Debug\netcoreapp2.0\C#.deps.json
+D:\OneDrive\Documents\Coding\Project Euler\C#\bin\Debug\netcoreapp2.0\C#.runtimeconfig.json
+D:\OneDrive\Documents\Coding\Project Euler\C#\bin\Debug\netcoreapp2.0\C#.runtimeconfig.dev.json
+D:\OneDrive\Documents\Coding\Project Euler\C#\bin\Debug\netcoreapp2.0\C#.dll
+D:\OneDrive\Documents\Coding\Project Euler\C#\bin\Debug\netcoreapp2.0\C#.pdb
+D:\OneDrive\Documents\Coding\Project Euler\C#\obj\Debug\netcoreapp2.0\C#.dll
+D:\OneDrive\Documents\Coding\Project Euler\C#\obj\Debug\netcoreapp2.0\C#.pdb

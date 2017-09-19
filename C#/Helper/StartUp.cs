@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 namespace ProjectEuler.Helper
 {
 	using System.IO;
-	using System.Runtime.InteropServices;
-	using System.Windows.Forms;
+	using System.Runtime.InteropServices;	
 
 	static class StartUp
 	{
@@ -52,7 +51,7 @@ namespace ProjectEuler.Helper
 		//Returns the content of a file
 		public static string[] GetFileContent(string name)
 		{
-			var startup = Application.StartupPath;
+			var startup = System.AppDomain.CurrentDomain.BaseDirectory;
 			var parent = "..";
 
 			var fullpath = Path.Combine(startup, parent, parent, @"Problems\Input", name);
