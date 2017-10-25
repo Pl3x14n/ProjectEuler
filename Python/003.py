@@ -1,12 +1,4 @@
-def prime_factors(n):
-	f = 2 
-	while (n > 1):
-		while(n % f == 0):
-			n /= f
-			yield f
+from mathlib import prime_factors
 
-		f += 1 if f == 2 else 2
-
-
-print(list(prime_factors(600851475143))[-1])
+print(list(prime_factors(600851475143))[-1][0])
 

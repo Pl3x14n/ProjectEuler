@@ -1,9 +1,4 @@
-from math import factorial
-
-def ncr(n, k):
-	return factorial(n) // factorial(n-k) // factorial(k)
-
-
+from mathlib import ncr
 
 ctr = 0
 

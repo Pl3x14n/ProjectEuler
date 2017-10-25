@@ -21,7 +21,7 @@ def is_prime(n):
 	if (n % 2 == 0):
 		return n == 2
 
-	for f in range(3, int(n**0.5) + 1):
+	for f in range(3, int(sqrt(n)) + 1, 2):
 		if (n % f == 0): 
 			return False
 
@@ -97,7 +97,7 @@ def octagonal(n):
 
 
 def is_pentagonal(p):
-	return (((24*p+1)**0.5 + 1)/6).is_integer()
+	return ((sqrt(24*p+1) + 1)/6).is_integer()
 
 
 

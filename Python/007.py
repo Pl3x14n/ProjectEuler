@@ -1,15 +1,4 @@
-from math import sqrt
-
-def is_prime(n):
-	if (n % 2 == 0):
-		return n == 2
-
-	for f in range(3, int(sqrt(n)) + 1):
-		if (n % f == 0): 
-			return False
-
-	return True
-
+from mathlib import is_prime
 
 found = 1
 n = 1

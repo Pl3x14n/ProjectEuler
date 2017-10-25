@@ -1,8 +1,4 @@
-def digits(n):
-	while n >= 1:
-		yield n % 10
-		n //= 10
-
+from mathlib import digits
 
 
 pow = 1

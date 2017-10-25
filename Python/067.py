@@ -1,4 +1,4 @@
-content = open("Input067.txt", "r", encoding="utf-8-sig").read()
+content = open("..\In puts\Input067.txt", "r", encoding="utf-8-sig").read()
 triangle = [[int(x) for x in line.split(" ")] for line in content.split("\n")]
 triangle.sort(key=lambda r: len(r), reverse=True)
 

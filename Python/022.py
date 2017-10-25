@@ -1,6 +1,6 @@
 import string
 
-content = open("Input022.txt", "r", encoding="utf-8-sig").read()
+content = open("..\Inputs\Input022.txt", "r", encoding="utf-8-sig").read()
 names = [n[1:-1] for n in content.split(",")]
 names.sort()
 

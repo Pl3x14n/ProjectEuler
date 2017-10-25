@@ -1,15 +1,4 @@
-from math import sqrt
-
-def divsum(n):
-	s = 1
-	for d in range(2, int(sqrt(n))+1):
-		if (n % d == 0):
-			s += d + n//d
-	if (sqrt(n).is_integer()):
-		s -= int(sqrt(n))
-	return s
-
-
+from mathlib import divsum
 
 limit = 28123
 

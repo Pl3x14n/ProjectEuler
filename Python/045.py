@@ -1,5 +1,6 @@
 from itertools import count
 from math import sqrt
+from mathlib import hexagonal as h
 
 
 # Equality:
@@ -17,11 +18,9 @@ from math import sqrt
 
 
 def pentagonal_index(p):
-	n = ((24*p+1)**0.5 + 1) / 6
+	n = (sqrt(24*p+1) + 1) / 6
 	return int(n) if n.is_integer() else -1
 
-def h(n):
-	return n*(2*n-1)
 
 
 # Iterating over the Hexagonals makes the most sense, cause below a limit are less hexagonals than pentagonals and triangle nums

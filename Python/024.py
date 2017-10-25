@@ -11,7 +11,7 @@ print(next(perms))
 
 
 
-# Mathematical approach (div and conquer:
+# Mathematical approach (div and conquer):
 
 # We have 10 digits, 1 + 9. Goal is the 1000000th perm
 # Arranging 9 digits has 9! = 362880 possibilities

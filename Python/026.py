@@ -1,7 +1,4 @@
-def is_cyclic(d):
-	while(d % 2 == 0): d //= 2
-	while(d % 5 == 0): d //= 5
-	return d != 1
+from mathlib import is_cyclic
 
 
 

@@ -7,7 +7,7 @@ dia1 = (0, 21, 42, 63, lambda i: hor[4](i) and ver[4](i))
 dia2 = (0, 19, 38, 57, lambda i: i%20 > 3 and ver[4](i))
 
 # Read nums
-content = open("Input011.txt", "r").read()
+content = open("..\Inputs\Input011.txt", "r").read()
 nums = [int(x) for x in content[3:].replace("\n", " ").split()]
 
 # Calc products

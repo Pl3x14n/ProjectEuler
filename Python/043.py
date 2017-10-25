@@ -1,5 +1,6 @@
 from itertools import permutations
 from math import factorial as fact
+from mathlib import to_number
 
 
 # d1d2d3: div by 2		--> 	d3 % 2 == 0
@@ -18,10 +19,6 @@ def satisfies_conditions(d):
 	if (d[6]*100 + d[7]*10 + d[8]) % 13 != 0: return False
 	if (d[7]*100 + d[8]*10 + d[9]) % 17 != 0: return False
 	return True
-
-
-def to_number(dgts):
-	return sum(d * 10**(len(dgts)-1-i) for i, d in enumerate(dgts))
 
 
 

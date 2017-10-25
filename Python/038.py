@@ -1,15 +1,5 @@
 from itertools import count
-
-
-def digits(n):
-	while n >= 1:
-		yield n % 10
-		n //= 10
-
-def is_pandigital(n):
-	dgts = sorted(digits(n))
-	return all(dgts[i+1] == d+1 for i, d in enumerate(dgts[:-1]))
-		
+from mathlib import digits. is_pandigital
 
 
 # 918273645 must be beaten - so we need a 9 in front

@@ -1,10 +1,6 @@
 from itertools import count 
+from mathlib import pentagonal as p, is_pentagonal as is_p
 
-def p(n):
-	return n*(3*n-1) // 2
-
-def is_p(p):
-	return (((24*p+1)**0.5 + 1)/6).is_integer()
 
 
 pentas = []
