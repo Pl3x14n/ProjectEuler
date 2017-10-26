@@ -31,11 +31,11 @@ def conv(v):
 
 
 print()
-print(" {0:>12}  |{1:^{w}}|{2:^{w}}|{3:^{w}}".format("Problem No.", *langs, w=17))
-print(" " + "=" * (14+17*3+3))
+print(" {0:>12}  \u2551{1:^{w}}\u2502{2:^{w}}\u2502{3:^{w}}".format("Problem No.", *langs, w=17))
+print(" " + "\u2500"*14 + "\u256B" + "\u2500"*17 + "\u253C" + "\u2500"*17 + "\u253C" + "\u2500"*16)
 
 for no, vals in sorted(problems.items()):
-    print(" {0:>12}  |{1:^{w}}|{2:^{w}}|{3:^{w}}".format(str(no).zfill(3), *[conv(v) for v in vals], w=17))
+    print(" {0:>12}  \u2551{1:^{w}}\u2502{2:^{w}}\u2502{3:^{w}}".format(str(no).zfill(3), *[conv(v) for v in vals], w=17))
 
 
 input()

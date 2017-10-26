@@ -22,10 +22,10 @@ class Hand:
 		flush = (len(set(suits)) == 1)
 
 		# Tuples
-		 
+		
 
-
-		return str(straight) + str(flush) 
+		
+		return str(straight) + " " + str(flush) 
 
 
 
@@ -41,6 +41,7 @@ def string_to_hand(str):
 	return Hand(hand)
 
 
-
-h = string_to_hand("3D 4D 5D 6D 7S")
+s = "3D 4D 9D 6D 7D"
+h = string_to_hand(s)
+print(s)
 print(h.get_rank())
